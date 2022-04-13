@@ -51,11 +51,19 @@ Plug 'govim/govim'
 
 Plug 'matze/vim-move'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()            
 
 let g:clojure_syntax_keywords = {
     \ 'clojureDefine': ["defproject", "s/defn"]
     \ }
+
+"Configs for coc.java 
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 let g:move_key_modifier='C'
 let g:rustfmt_autosave=1
