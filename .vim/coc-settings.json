@@ -1,5 +1,8 @@
 {
-  "java.completion.enabled" : false,
-  "diagnostic.enable" : false,
-  "suggest.autoTrigger" : "none"
+    "java.completion.enabled": false,
+    "diagnostic.enable": false,
+    "suggest.autoTrigger": "none",
+    "rust-analyzer.checkOnSave.enable": false,
+    "rust-analyzer.disableProgressNotifications": true,
+    "analyzer.trace.server": "verbose"
 }
