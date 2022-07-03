@@ -1,2 +1,2 @@
 # configs
-Tmux, Vim and zsh configs 
+Tmux, Vim(version 9) and zsh configs 
