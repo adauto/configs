@@ -3,7 +3,7 @@
 VIMRC=~/.vimrc
 TMUXCONF=~/.tmux.conf
 
-function is_bin_in_path {
+function is_bin_in_path() {
   if [[ -n $ZSH_VERSION ]]; then
     builtin whence -p "$1" &> /dev/null
   else  # bash:
@@ -12,7 +12,7 @@ function is_bin_in_path {
 }
 
 function install_homebrew() {
-  if [[ ! is_bin_in_path brew ]]; then
+  if ! [[  is_bin_in_path brew ]]; then
     echo "Installing homebrew"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else 
@@ -21,7 +21,7 @@ function install_homebrew() {
 }
 
 function install_zsh() {
-  if [[ ! -n $ZSH_VERSION ]]; then
+  if ! [[ -n $ZSH_VERSION ]]; then
     echo "Installing zsh and oh-my-zsh"
     brew install zsh \ 
       && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \ 
@@ -37,7 +37,7 @@ function install_vim() {
   echo "Installing vim"
   brew install vim
 
-  if [ ! -f "$VIMRC" ]; then
+  if ! [ -f "$VIMRC" ]; then
     echo "Creating the vimrc file"
     cp .vimrc ~
   else
@@ -49,14 +49,14 @@ function install_vim() {
 }
 
 function install_fzf() {
-  if [[ ! is_bin_in_path fzf ]]; then
+  if ! [[ is_bin_in_path fzf ]]; then
     echo "Installing fzf"
     brew install fzf \
       && $(brew --prefix)/opt/fzf/install
   else 
     echo "fzf detected"
   fi
-  if [[ ! is_bin_in_path bat ]]; then
+  if ! [[  is_bin_in_path bat ]]; then
       # Bat is rquired for syntax highlighting in fzf file preview
       echo "Installing bat"
       brew install bat
@@ -69,7 +69,7 @@ function install_tmux() {
   echo "Installing tmux"
   brew install tmux;
 
-  if [ ! -f "$TMUXCONF" ]; then
+  if ! [ -f "$TMUXCONF" ]; then
     echo "Creating the tmux conf file"
     cp .tmux.conf ~
   else
