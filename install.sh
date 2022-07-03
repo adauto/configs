@@ -10,19 +10,17 @@ install_homebrew() {
 
 install_vim() {
   echo "Installing vim"
-  brew install vim;
+  brew install vim
+
   if [ ! -f "$VIMRC" ]; then
     echo "Creating the vimrc file"
     cp .vimrc ~
-    echo "Copying vim configs"
-    cp -r .vim ~
   else
     echo "Updating the vimrc file content"
     cat .vimrc > ~/.vimrc
-    echo "Copying vim configs"
     rm -rf ~/.vim
-    cp -r .vim ~
   fi
+  cp -r .vim ~
 }
 
 install_tmux() {
@@ -47,4 +45,4 @@ while true; do
     esac
 done
 
-install_homebrew & install_vim & install_tmux
+install_homebrew && install_vim && install_tmux
