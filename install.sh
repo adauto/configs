@@ -5,7 +5,14 @@ TMUXCONF=~/.tmux.conf
 
 install_homebrew() {
   echo "Installing homebrew"
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh;
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+}
+
+install_zsh() {
+  echo "Installing zsh and oh-my-zsh"
+  brew install zsh \ 
+    && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \ 
+    && cp -r .oh-my-zsh/ ~
 }
 
 install_vim() {
@@ -20,7 +27,7 @@ install_vim() {
     cat .vimrc > ~/.vimrc
     rm -rf ~/.vim
   fi
-  cp -r .vim ~
+  cp -r .vim/ ~
 }
 
 install_tmux() {
@@ -45,4 +52,4 @@ while true; do
     esac
 done
 
-install_homebrew && install_vim && install_tmux
+install_homebrew && install_zsh && install_vim && install_tmux
