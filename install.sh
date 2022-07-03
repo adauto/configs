@@ -14,7 +14,7 @@ function is_bin_in_path {
 function install_homebrew() {
   if [[ ! is_bin_in_path brew ]]; then
     echo "Installing homebrew"
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else 
     echo "homebrew detected"
   fi 
