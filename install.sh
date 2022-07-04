@@ -1,10 +1,12 @@
 #!/bin/bash
 
+set -e
+
 VIMRC=~/.vimrc
 TMUXCONF=~/.tmux.conf
 VIMVERSION="IMproved 9"
 
-function is_bin_in_path() {
+is_bin_in_path() {
   if [[ -n $(echo $ZSH_VERSION) ]]; then
     echo $(builtin whence -p "$1")
   else  # bash:
@@ -12,24 +14,21 @@ function is_bin_in_path() {
   fi
 }
 
-function install_homebrew() {
+install_homebrew() {
   if ! [[ -n $(is_bin_in_path brew) ]]; then
     echo "Installing homebrew"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else 
     echo "homebrew detected"
-    brew update
-    brew upgrade
   fi 
 }
 
-function install_zsh() {
+install_zsh() {
   if ! [[ -n $ZSH ]]; then
     echo "Installing zsh and oh-my-zsh"
     brew install zsh
   else 
     echo "zsh detected"
-    brew reinstall zsh
   fi
 
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
@@ -39,7 +38,7 @@ function install_zsh() {
     sed -i'.zshrc' 's/# DISABLE_AUTO_TITLE="false"/DISABLE_AUTO_TITLE="true"/g' ~/.zshrc
 }
 
-function install_vim() {
+install_vim() {
   if ! [[ "$(vim --version)" == *"$VIMVERSION"* ]]; then
     echo "Installing vim"
     brew install vim
@@ -47,7 +46,6 @@ function install_vim() {
     cp .vimrc ~
   else
     echo "vim9 detected"	  
-    brew reinstall vim
     echo "Updating the vimrc file content"
     cat .vimrc > ~/.vimrc
   fi
@@ -67,13 +65,12 @@ function install_vim() {
   #vim -c 'PlugInstall'
 }
 
-function install_fzf() {
+install_fzf() {
   if ! [[ -n $(is_bin_in_path fzf) ]]; then
     echo "Installing fzf"
     brew install fzf
   else 
     echo "fzf detected"
-    brew reinstall fzf
   fi
 
   $(brew --prefix)/opt/fzf/install
@@ -84,30 +81,39 @@ function install_fzf() {
     brew install bat
   else 
     echo "bat detected"
-    brew reinstall bat
   fi
 }
 
-function install_tmux() {
+install_tmux() {
   if ! [[ -n $(is_bin_in_path tmux) ]]; then
     echo "Installing tmux"
-    brew install tmux;
+    brew install tmux
     echo "Creating the tmux conf file"
     cp .tmux.conf ~
   else
     echo "tmux detected"
-    brew reinstall tmux
-    echo "Updating the tmux conf file content"
-    cat .tmux.conf > ~/.tmux.conf
+  fi
+
+  echo "Updating the tmux conf file content"
+  cat .tmux.conf > ~/.tmux.conf
+}
+
+install_golang() {
+  if ! [[ -n $(is_bin_in_path go) ]]; then
+    echo "Installing golang"
+    brew install go
+  else
+    echo "golang detected"
   fi
 }
 
-function configure() {
+configure() {
   install_homebrew && \
     install_zsh && \
     install_vim && \
     install_fzf && \
     install_tmux && \
+    install_golang && \
     echo "** You need to run PlugInstall vim command in order to install all its plugins **"
     echo "** :CocInstall coc-rust-analyzer **"
     echo "** :CocInstall coc-java **" 
