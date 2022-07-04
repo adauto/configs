@@ -31,11 +31,11 @@ install_zsh() {
     echo "zsh detected"
   fi
 
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
-  cp .oh-my-zsh/themes/adauto.zsh-theme ~/.oh-my-zsh/themes/adauto.zsh-theme && \
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  cp .oh-my-zsh/themes/adauto.zsh-theme ~/.oh-my-zsh/themes/adauto.zsh-theme
   #Disabling terminal auto title
-  sed -i'.zshrc' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="adauto"/g' ~/.zshrc && \
-    sed -i'.zshrc' 's/# DISABLE_AUTO_TITLE="false"/DISABLE_AUTO_TITLE="true"/g' ~/.zshrc
+  sed -i'.zshrc' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="adauto"/g' ~/.zshrc
+  sed -i'.zshrc' 's/# DISABLE_AUTO_TITLE="false"/DISABLE_AUTO_TITLE="true"/g' ~/.zshrc
 }
 
 install_vim() {
@@ -114,9 +114,9 @@ configure() {
     install_fzf && \
     install_tmux && \
     install_golang && \
-    echo "** You need to run PlugInstall vim command in order to install all its plugins **"
-    echo "** :CocInstall coc-rust-analyzer **"
-    echo "** :CocInstall coc-java **" 
+    echo "** You need to run PlugInstall vim command in order to install all its plugins **" && \
+    echo "** :CocInstall coc-rust-analyzer **" && \
+    echo "** :CocInstall coc-java **"
 }
 
 while true; do
