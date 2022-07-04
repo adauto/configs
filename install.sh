@@ -116,9 +116,7 @@ configure() {
     install_fzf && \
     install_tmux && \
     install_golang && \
-    echo "** You need to run PlugInstall vim command in order to install all its plugins **" && \
-    echo "** :CocInstall coc-rust-analyzer **" && \
-    echo "** :CocInstall coc-java **"
+    echo "** All of the tools were successfully installed  **"
 }
 
 while true; do
