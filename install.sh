@@ -37,7 +37,7 @@ install_zsh() {
   echo "setting zsh theme"
   sed -i'.zshrc' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="adauto"/g' ~/.zshrc
   echo "disabling zsh auto title"
-  sed -i'.zshrc' 's/# DISABLE_AUTO_TITLE="false"/DISABLE_AUTO_TITLE="true"/g' ~/.zshrc
+  sed -i'.zshrc' 's/# DISABLE_AUTO_TITLE="true"/DISABLE_AUTO_TITLE="true"/g' ~/.zshrc
 }
 
 install_vim() {
