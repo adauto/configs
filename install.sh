@@ -31,7 +31,7 @@ install_zsh() {
     echo "zsh detected"
   fi
 
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
   cp .oh-my-zsh/themes/adauto.zsh-theme ~/.oh-my-zsh/themes/adauto.zsh-theme
   #Disabling terminal auto title
   sed -i'.zshrc' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="adauto"/g' ~/.zshrc
