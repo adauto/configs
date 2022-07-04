@@ -103,20 +103,21 @@ function install_tmux() {
 }
 
 function configure() {
-  while true; do
-    read -p "This script will override all Vim configs. Do you want to proceed? (y/n)" yn
-      case $yn in
-          [Yy]* ) make install; break;;
-          [Nn]* ) exit;;
-          * ) echo "Please answer yes or no.";;
-      esac
-  done
-
-  install_homebrew && install_zsh && install_vim && install_fzf && install_tmux
-
-  echo "** You need to run PlugInstall vim command in order to install all its plugins **" 
-  echo "** :CocInstall coc-rust-analyzer **" 
-  echo "** :CocInstall coc-java **" 
+  install_homebrew && \
+    install_zsh && \
+    install_vim && \
+    install_fzf && \
+    install_tmux && \
+    echo "** You need to run PlugInstall vim command in order to install all its plugins **"
+    echo "** :CocInstall coc-rust-analyzer **"
+    echo "** :CocInstall coc-java **" 
 }
 
-configure
+while true; do
+  read -p "This script will override all Vim configs. Do you want to proceed? (y/n)" yn
+    case $yn in
+        [Yy]* ) configure; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
