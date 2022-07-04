@@ -26,15 +26,17 @@ function install_homebrew() {
 function install_zsh() {
   if ! [[ -n $ZSH ]]; then
     echo "Installing zsh and oh-my-zsh"
-    brew install zsh && \
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
-      cp -r .oh-my-zsh/ ~ && \
-      #Disabling terminal auto title
-      sed -i'.zshrc' 's/# DISABLE_AUTO_TITLE="false"/DISABLE_AUTO_TITLE="true"/g' ~/.zshrc
+    brew install zsh
   else 
     echo "zsh detected"
     brew reinstall zsh
   fi
+
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
+  cp .oh-my-zsh/themes/adauto.zsh-theme ~/.oh-my-zsh/themes/adauto.zsh-theme && \
+  #Disabling terminal auto title
+  sed -i'.zshrc' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="adauto"/g' ~/.zshrc && \
+    sed -i'.zshrc' 's/# DISABLE_AUTO_TITLE="false"/DISABLE_AUTO_TITLE="true"/g' ~/.zshrc
 }
 
 function install_vim() {
@@ -48,6 +50,12 @@ function install_vim() {
     brew reinstall vim
     echo "Updating the vimrc file content"
     cat .vimrc > ~/.vimrc
+  fi
+
+  if ! [[ -n $(is_bin_in_path node) ]]; then
+    # Some vim plugins depends on Node
+    echo "Installing node"
+    brew install node
   fi
 
   rm -rf ~/.vim
