@@ -17,7 +17,7 @@ is_bin_in_path() {
 install_homebrew() {
   if ! [[ -n $(is_bin_in_path brew) ]]; then
     echo "Installing homebrew"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else 
     echo "homebrew detected"
   fi 
@@ -31,7 +31,7 @@ install_zsh() {
     echo "zsh detected"
   fi
 
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   cp .oh-my-zsh/themes/adauto.zsh-theme ~/.oh-my-zsh/themes/adauto.zsh-theme
   #Disabling terminal auto title
   sed -i'.zshrc' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="adauto"/g' ~/.zshrc
