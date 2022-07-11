@@ -6,6 +6,9 @@ filetype plugin indent on
 
 colorscheme adauto
 
+hi Pmenu ctermbg=235 ctermfg=white
+hi CocFloating ctermbg=brown
+
 set mouse-=a
 set clipboard=unnamed
 set tabstop=2
@@ -78,6 +81,21 @@ def ShowDocumentation()
     call feedkeys('K', 'in')
   endif
 enddef
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+def CheckBackspace(): bool
+  var col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+enddef
+
+command! -nargs=0 OR :call CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+command! -nargs=0 Format :call CocActionAsync('format')
 
 g:move_key_modifier = 'C'
 g:rustfmt_autosave = 1
