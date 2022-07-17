@@ -72,16 +72,16 @@ g:clojure_syntax_keywords = {
   \ 'clojureDefine': ["defproject", "s/defn"]
   \ }
 
-# Configs fzf
+# fzf configs
 nnoremap <C-f> :Files<CR>
 
-# Configs for coc.java 
+# coc.java configs
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-# Use K to show documentation in preview window.
+# use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 def ShowDocumentation()
@@ -111,7 +111,7 @@ g:move_key_modifier = 'C'
 g:rustfmt_autosave = 1
 #g:mapleader = '\'
 
-# Configs nerdtree
+# nerdtree configs
 var fgreen = "8FAA54"
 g:WebDevIconsDefaultFolderSymbolColor = fgreen
 
