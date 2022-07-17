@@ -7,7 +7,7 @@ filetype plugin indent on
 colorscheme adauto
 
 hi Pmenu ctermbg=235 ctermfg=white
-hi CocFloating ctermbg=brown
+hi CocFloating ctermbg=235
 
 set mouse-=a
 set clipboard=unnamed
@@ -23,6 +23,7 @@ set nocompatible
 set laststatus=1
 set backspace=indent,eol,start
 set rtp+=~/.vim/bundle/Vundle.vim
+set encoding=UTF-8
 
 def Json()
    :%!python3 -m json.tool
@@ -48,6 +49,12 @@ Plug 'https://tpope.io/vim/fireplace'
 
 Plug 'https://github.com/guns/vim-clojure-static'
 
+Plug 'preservim/nerdtree'
+
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+Plug 'ryanoasis/vim-devicons'
+
 # Plug 'isRuslan/vim-es6'
 # Plug 'mxw/vim-jsx'
  
@@ -64,6 +71,9 @@ call plug#end()
 g:clojure_syntax_keywords = {
   \ 'clojureDefine': ["defproject", "s/defn"]
   \ }
+
+# Configs fzf
+nnoremap <C-f> :Files<CR>
 
 # Configs for coc.java 
 nmap <silent> gd <Plug>(coc-definition)
@@ -95,8 +105,17 @@ enddef
 
 command! -nargs=0 OR :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-command! -nargs=0 Format :call CocActionAsync('format')
+command! -nargs=0 FM :call CocActionAsync('format')
 
 g:move_key_modifier = 'C'
 g:rustfmt_autosave = 1
-g:mapleader = '\'
+#g:mapleader = '\'
+
+# Configs nerdtree
+var fgreen = "8FAA54"
+g:WebDevIconsDefaultFolderSymbolColor = fgreen
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+# nnoremap <C-f> :NERDTreeFind<CR>

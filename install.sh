@@ -94,10 +94,10 @@ install_tmux() {
     cp .tmux.conf ~
   else
     echo "tmux detected"
+    echo "Updating the tmux conf file content"
+    cat .tmux.conf > ~/.tmux.conf
   fi
 
-  echo "Updating the tmux conf file content"
-  cat .tmux.conf > ~/.tmux.conf
 }
 
 install_golang() {
