@@ -97,7 +97,6 @@ install_tmux() {
     echo "Updating the tmux conf file content"
     cat .tmux.conf > ~/.tmux.conf
   fi
-
 }
 
 install_golang() {
