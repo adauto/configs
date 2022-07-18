@@ -12,7 +12,7 @@ hi CocFloating ctermbg=235
 set mouse-=a
 set clipboard=unnamed
 set tabstop=2
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 set ai
 set ma
@@ -54,9 +54,6 @@ Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 Plug 'ryanoasis/vim-devicons'
-
-# Plug 'isRuslan/vim-es6'
-# Plug 'mxw/vim-jsx'
  
 Plug 'leafgarland/typescript-vim'
 
@@ -81,7 +78,14 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-# use K to show documentation in preview window
+# symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+# formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+# use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 def ShowDocumentation()
@@ -103,13 +107,11 @@ def CheckBackspace(): bool
   return !col || getline('.')[col - 1]  =~# '\s'
 enddef
 
-command! -nargs=0 OR :call CocActionAsync('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Format :call CocActionAsync('format')
+command! -nargs=0 OrganizeImports :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-command! -nargs=0 FM :call CocActionAsync('format')
-
-g:move_key_modifier = 'C'
-g:rustfmt_autosave = 1
-#g:mapleader = '\'
+nnoremap <leader>F :Format<CR>
+nnoremap <leader>O :OrganizeImports<CR>
 
 # nerdtree configs
 var fgreen = "8FAA54"
@@ -118,4 +120,6 @@ g:WebDevIconsDefaultFolderSymbolColor = fgreen
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-# nnoremap <C-f> :NERDTreeFind<CR>
+
+g:move_key_modifier = 'C'
+g:rustfmt_autosave = 1
