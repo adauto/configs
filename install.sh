@@ -5,6 +5,7 @@ set -e
 VIMRC=~/.vimrc
 TMUXCONF=~/.tmux.conf
 VIMVERSION="IMproved 9"
+FONT_FILE=/Libray/Fonts/SFMono\ Regular\ Nerd\ Font.otf
 
 is_bin_in_path() {
   if [[ -n $(echo $ZSH_VERSION) ]]; then
@@ -108,10 +109,21 @@ install_golang() {
   fi
 }
 
+install_fonts() {
+    echo "Installing patched font file"
+
+    if [ -f "$FONT_FILE" ]; then
+        echo "Font file detected"
+    else
+        cp ./fonts/SFMono\ Regular\ Nerd\ Font.otf  /Libray/Fonts/
+    fi
+}
+
 configure() {
   install_homebrew && \
     install_zsh && \
     install_vim && \
+    install_fonts && \
     install_fzf && \
     install_tmux && \
     install_golang && \
