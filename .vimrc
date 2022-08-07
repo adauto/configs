@@ -69,6 +69,9 @@ g:clojure_syntax_keywords = {
   \ 'clojureDefine': ["defproject", "s/defn"]
   \ }
 
+# confirm selection with CR
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 # fzf configs
 nnoremap <C-f> :Files<CR>
 
