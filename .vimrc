@@ -7,7 +7,14 @@ filetype plugin indent on
 colorscheme adauto
 
 hi Pmenu ctermbg=235 ctermfg=white
-hi CocFloating ctermbg=235
+hi PmenuSel ctermfg=16 ctermbg=84 cterm=bold 
+hi Search ctermfg=237 cterm=bold
+
+autocmd VimEnter,ColorScheme * hi! CocSearch ctermfg=107 cterm=bold 
+autocmd VimEnter,ColorScheme * hi! CocPumSearch ctermfg=107 cterm=bold 
+autocmd VimEnter,ColorScheme * hi! CocFloatDividingLine ctermfg=107 cterm=bold 
+autocmd VimEnter,ColorScheme * hi! CocMarkdownLink ctermfg=167
+autocmd VimEnter,ColorScheme * hi! CocPumShortcut ctermfg=107
 
 set mouse-=a
 set clipboard=unnamed
@@ -125,4 +132,3 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 g:move_key_modifier = 'C'
-g:rustfmt_autosave = 1

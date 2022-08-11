@@ -1,8 +1,32 @@
 {
-    "java.completion.enabled": false,
     "diagnostic.enable": false,
     "suggest.autoTrigger": "none",
     "rust-analyzer.checkOnSave.enable": false,
     "rust-analyzer.disableProgressNotifications": true,
-    "analyzer.trace.server": "verbose"
+    "java.completion.enabled": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "c",
+        "r",
+        "cpp",
+        "cmake",
+        "sh",
+        "bash",
+        "julia",
+        "java",
+        "sql",
+        "rust",
+        "toml",
+        "json",
+        "javascript",
+        "yaml",
+        "xml",
+        "html",
+        "typescript",
+        "lisp",
+        "lua",
+        "vim",
+        "clojure",
+        "go",
+        "python"
+    ]
 }

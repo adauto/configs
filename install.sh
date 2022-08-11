@@ -2,9 +2,9 @@
 
 set -e
 
+VIMVERSION="IMproved 9"
 VIMRC=~/.vimrc
 TMUXCONF=~/.tmux.conf
-VIMVERSION="IMproved 9"
 FONT_FILE=/Libray/Fonts/SFMono\ Regular\ Nerd\ Font.otf
 
 is_bin_in_path() {
