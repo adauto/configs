@@ -34,7 +34,10 @@ require("nvim-lsp-installer").setup {}
 require('Comment').setup()
 
 require("nvim-tree").setup({
-    remove_keymaps = { "<C-t>" }
+    remove_keymaps = { "<C-t>" },
+    view = {
+        adaptive_size = true,
+    }
 })
 
 require('indent_blankline').setup {
