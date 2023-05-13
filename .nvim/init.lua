@@ -32,6 +32,7 @@ vim.cmd([[hi Search ctermfg=237 cterm=bold]])
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.rg_run_async = 0
 
 require("nvim-lsp-installer").setup {}
 
